@@ -1,17 +1,23 @@
 // task question 
 
 
-
-let arr = ["bat", "tap", "cat", "tab", "pat"];
-let words = [];
-
-for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-        if (arr[i].split('').sort().join('') === arr[j].split('').sort().join('')) {
-            words.push(arr[i] + ' ' + arr[j]);
-        }
-    }
-}
-console.log(words)
-
+  function wordsAnagram(words) {
+        let arr = {};
+        
+        words.forEach(word => {
+            let sorted = word.split('').sort().join('');
+    
+            if(arr[sorted]) {
+                arr[sorted].push(word);
+            }else {
+    
+                arr[sorted] = [word];        
+            }
+        });
+        return Object.values(arr)
+     }
+     
+     const input = ['bat','tap','cat','tab','pat'];
+     const output = wordsAnagram(input);
+     console.log(output); 
 
